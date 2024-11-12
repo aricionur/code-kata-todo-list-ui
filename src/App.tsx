@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
+import HomePage from "./pages/home/HomePage"
+import MainLayout from "./components/layouts/MainLayout"
+import LoginPage from "./pages/login/LoginPage"
+import RegisterPage from "./pages/register/RegisterPage"
+import { AuthProvider } from "./components/subjectRelated/auth/context/AuthContext"
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AuthProvider>
+      <Router>
+        <MainLayout>
+          <Routes>
+            <Route path="/" element={<Navigate to="/todos" />} />
+            <Route path="/todos" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+          </Routes>
+        </MainLayout>
+      </Router>
+    </AuthProvider>
+  )
 }
 
-export default App;
+export default App
