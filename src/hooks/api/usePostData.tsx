@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios, { AxiosRequestConfig } from "axios"
+import { useAuth } from "../../components/subjectRelated/auth/context/AuthContext"
 
 interface UsePostDataProps<T> {
   url: string
@@ -18,6 +19,7 @@ export function usePostData<T, R>({ url, data, config }: UsePostDataProps<T>): U
   const [responseData, setResponseData] = useState<R | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
+  // const {} = useAuth()
 
   const postData = async () => {
     setLoading(true)

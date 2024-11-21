@@ -3,18 +3,13 @@ import { Alert, Button, CircularProgress, Container, Stack, TextField, Typograph
 import { FC, useState, ChangeEvent, useEffect } from "react"
 import { usePostData } from "../../../../hooks/api/usePostData"
 import { useNavigate } from "react-router-dom"
-import { useAuth } from "../context/AuthContext"
+import { User, useAuth } from "../context/AuthContext"
 
-interface RegisterData {
-  username: string
-  email: string
+interface RegisterData extends Pick<User, "email" | "username"> {
   password: string
 }
 
-interface RegisterResponseData {
-  username: string
-  email: string
-  password: string
+interface RegisterResponseData extends RegisterData {
   id: number
   token: string
 }

@@ -12,7 +12,10 @@ interface LoginData {
 
 interface ResponseData {
   id: number
-  success: boolean
+  username: string
+  email: string
+  password: string
+  token: string
 }
 
 const appURL = "http://localhost:5000/v1"

@@ -1,12 +1,12 @@
 import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material"
-import { useState } from "react"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../subjectRelated/auth/context/AuthContext"
 
 const Navbar = () => {
   const navigate = useNavigate()
-  const { user, logout } = useAuth()
+  const { state, logout } = useAuth()
+  const { user } = state
 
   const handleLogout = () => {
     logout()
@@ -24,13 +24,6 @@ const Navbar = () => {
           </Typography>
 
           <Box alignItems="right" sx={{ flexGrow: 1, textAlign: "right" }}>
-            {/* <Button
-              onClick={() => setUser((user) => !user)}
-              style={{ color: "white" }}
-            >
-              Toogle user
-            </Button> */}
-
             {user ? (
               <Button
                 style={{
